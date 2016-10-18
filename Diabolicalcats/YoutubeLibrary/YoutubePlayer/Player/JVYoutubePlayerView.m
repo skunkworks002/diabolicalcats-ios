@@ -302,9 +302,9 @@
     if ([request.URL.absoluteString isEqualToString:@"ytplayer://onError?data=150"] || [request.URL.absoluteString isEqualToString:@"ytplayer://onStateChange?data=0"])
     {
         
-        // if video list complete then this function call last play vedio in loop
    //    [self nextVideo]; // play next video if current can't be played
     
+        //this 'll retun the playlist first video if the playlist videos ends
         [self playVideoAt:0];
     }
     

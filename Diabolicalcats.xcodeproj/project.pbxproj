@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D30CE2401D9E7DAC00282D47 /* catIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D30CE23F1D9E7DAC00282D47 /* catIcon.png */; };
-		D30E40FE1D952A830095A959 /* TOActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D30E40FD1D952A830095A959 /* TOActionSheet.m */; };
-		D30E41141D9546480095A959 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30E41131D9546480095A959 /* InviteFriendsViewController.m */; };
-		D31AEE681D82C4AC000A0D00 /* ChannelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D31AEE671D82C4AC000A0D00 /* ChannelTableViewCell.m */; };
 		D31AEE6C1D82C4F2000A0D00 /* CollectionViewSnapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D31AEE6A1D82C4F2000A0D00 /* CollectionViewSnapCell.m */; };
 		D31AEE6D1D82C4F2000A0D00 /* CollectionViewSnapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31AEE6B1D82C4F2000A0D00 /* CollectionViewSnapCell.xib */; };
 		D31FFB0E1D780FDB00CCB733 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FFB0D1D780FDB00CCB733 /* main.m */; };
@@ -62,12 +59,6 @@
 
 /* Begin PBXFileReference section */
 		D30CE23F1D9E7DAC00282D47 /* catIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = catIcon.png; path = ../Libraries/leftMenuController/Images/catIcon.png; sourceTree = "<group>"; };
-		D30E40FC1D952A830095A959 /* TOActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActionSheet.h; sourceTree = "<group>"; };
-		D30E40FD1D952A830095A959 /* TOActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOActionSheet.m; sourceTree = "<group>"; };
-		D30E41121D9546480095A959 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
-		D30E41131D9546480095A959 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
-		D31AEE661D82C4AC000A0D00 /* ChannelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelTableViewCell.h; sourceTree = "<group>"; };
-		D31AEE671D82C4AC000A0D00 /* ChannelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelTableViewCell.m; sourceTree = "<group>"; };
 		D31AEE691D82C4F2000A0D00 /* CollectionViewSnapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewSnapCell.h; sourceTree = "<group>"; };
 		D31AEE6A1D82C4F2000A0D00 /* CollectionViewSnapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewSnapCell.m; sourceTree = "<group>"; };
 		D31AEE6B1D82C4F2000A0D00 /* CollectionViewSnapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewSnapCell.xib; sourceTree = "<group>"; };
@@ -158,19 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				D363649A1DA5129600DB2C98 /* MBProgressHUD */,
-				D30E40FC1D952A830095A959 /* TOActionSheet.h */,
-				D30E40FD1D952A830095A959 /* TOActionSheet.m */,
 			);
 			path = Libraries;
-			sourceTree = "<group>";
-		};
-		D30E41111D95461C0095A959 /* InviteFriendsVC */ = {
-			isa = PBXGroup;
-			children = (
-				D30E41121D9546480095A959 /* InviteFriendsViewController.h */,
-				D30E41131D9546480095A959 /* InviteFriendsViewController.m */,
-			);
-			path = InviteFriendsVC;
 			sourceTree = "<group>";
 		};
 		D31AEE651D82C4AC000A0D00 /* LibraryViewCell */ = {
@@ -179,8 +159,6 @@
 				D31AEE691D82C4F2000A0D00 /* CollectionViewSnapCell.h */,
 				D31AEE6A1D82C4F2000A0D00 /* CollectionViewSnapCell.m */,
 				D31AEE6B1D82C4F2000A0D00 /* CollectionViewSnapCell.xib */,
-				D31AEE661D82C4AC000A0D00 /* ChannelTableViewCell.h */,
-				D31AEE671D82C4AC000A0D00 /* ChannelTableViewCell.m */,
 			);
 			path = LibraryViewCell;
 			sourceTree = "<group>";
@@ -209,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				D352ADB21DB4E8AB00B23C05 /* iconsImages */,
-				D30E41111D95461C0095A959 /* InviteFriendsVC */,
 				D30E40FB1D952A830095A959 /* Libraries */,
 				D31AEE651D82C4AC000A0D00 /* LibraryViewCell */,
 				D31FFB4B1D78672A00CCB733 /* YoutubeLibrary */,
@@ -544,10 +521,8 @@
 				D31FFB841D78672A00CCB733 /* JVYoutubePlayerView.m in Sources */,
 				D31FFB831D78672A00CCB733 /* JVPlayerConstants.m in Sources */,
 				D3235C7F1D93C3FF00E03B87 /* ChameleonStatusBar.m in Sources */,
-				D31AEE681D82C4AC000A0D00 /* ChannelTableViewCell.m in Sources */,
 				D31FFB4A1D78597C00CCB733 /* VedioListViewController.m in Sources */,
 				D3235C801D93C3FF00E03B87 /* NSArray+Chameleon.m in Sources */,
-				D30E41141D9546480095A959 /* InviteFriendsViewController.m in Sources */,
 				D31FFB811D78672A00CCB733 /* NSString+Addons.m in Sources */,
 				D31FFB111D780FDB00CCB733 /* AppDelegate.m in Sources */,
 				D31FFB821D78672A00CCB733 /* UIWebView+Addons.m in Sources */,
@@ -560,7 +535,6 @@
 				D31FFB0E1D780FDB00CCB733 /* main.m in Sources */,
 				D31FFB7B1D78672A00CCB733 /* SphereMenu.m in Sources */,
 				D31FFB801D78672A00CCB733 /* JVYoutubePlayerView+Queuing.m in Sources */,
-				D30E40FE1D952A830095A959 /* TOActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

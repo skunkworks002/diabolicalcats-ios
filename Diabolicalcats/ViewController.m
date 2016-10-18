@@ -12,15 +12,14 @@
 #import "MBProgressHUD.h"
 
 @interface ViewController () {
-  //  NSArray *channelListArray;
-   // NSArray *channelVediosListArray;
+    int channelInt;
+    
     NSString *channelTitle;
 
     NSMutableArray *videos;
+    NSMutableArray *filteredVideostList;
     NSArray *channelList;
     NSArray *imagesArray;
-    NSMutableArray *filteredVideostList;
-    int channelInt;
 }
 @end
 
@@ -31,27 +30,21 @@
     [super viewDidLoad];
     channelInt = 0;
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];//colorWithRed:59/255.0f green:142/255.0f blue:194/255.0f alpha:1.0];
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     channelList = [NSArray arrayWithObjects:@"Catology",@"Kittens", nil];
     imagesArray = [NSArray arrayWithObjects:@"Catology.jpg",@"kittens.jpeg", nil];
-   // [self initiateRequestToYoutubeApiAndGetChannelInfo:0];
 }
 
 -(void)initiateRequestToYoutubeApiAndGetChannelInfo:(NSInteger)channelIndex
 {
-    NSString *channel;// = @"UCFl1PkN6_aIKD4JVUDkZV1Q";
-    
+    NSString *channel;
     switch (channelIndex) {
         case 0:
-           channel = @"UCOTC5SnNAt4KLHoX6FxoxoQ"; // xululab channel for catalog
-
-         //  channel = @"UC2vKValY-47ZlAL7Jvbbpzw"; // testing
+           channel = @"UCOTC5SnNAt4KLHoX6FxoxoQ";
             break;
         case 1:
-           // infoChannel = @"UCDHTgkwCRS-S8fvxYx5eDcQ";
             channel = @"UCdAHCE7Y3dXPmqXE8tc2_Nw";
             break;
         default:
@@ -59,7 +52,6 @@
     }
     
     NSString *urlYouCanUseForChannel = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=%@&key=AIzaSyBGcJvMGd91jHoCeKnOs_3JU9RMZOHUqIw",channel];
-    
     NSURL *url = [[NSURL alloc] initWithString: urlYouCanUseForChannel];
     // Create your request
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -71,25 +63,11 @@
             NSDictionary *jsonResult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
             if (!jsonError) {
                 // better put a breakpoint here to see what is the result and how it is brought to you. Channel id name etc info should be there
-                
-                
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    NSLog(@"%@",jsonResult);
-                    
-                    id keyValuePairDict = jsonResult;
-                    
-                    videos = keyValuePairDict[@"items"];
-                    
-                    //  [self programeTimeSearchingMethode:videos];
-                    [self performSegueWithIdentifier:@"VedioListViewController" sender:videos];
-                    
+                id keyValuePairDict = jsonResult;
+                videos = keyValuePairDict[@"items"];
+                [self performSegueWithIdentifier:@"VedioListViewController" sender:videos];
                 });
-
-                
-                
-               // [imagesCollectionView reloadData];
             }
             else
             {
@@ -97,50 +75,38 @@
             }
         }
     }];
-    
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = @"Channels";
-    //[self channelListCallingMethode];
     [imagesCollectionView registerNib:[UINib nibWithNibName:@"CollectionViewSnapCell" bundle:[NSBundle mainBundle]]
            forCellWithReuseIdentifier:@"CollectionViewSnapCell"];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-   // return videos.count;
     return channelList.count;
-   
 }
 
-
 - (CollectionViewSnapCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CollectionViewSnapCell *colViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewSnapCell" forIndexPath:indexPath];    
-   
-      colViewCell.collectionTitleLabel.text = [channelList objectAtIndex:indexPath.row];
+    CollectionViewSnapCell *colViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewSnapCell" forIndexPath:indexPath];
+    colViewCell.collectionTitleLabel.text = [channelList objectAtIndex:indexPath.row];
     colViewCell.collectionImageView.image = [UIImage imageNamed:[imagesArray objectAtIndex:indexPath.row]];
-    
-
        return colViewCell;
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
    NSInteger abc = indexPath.row;
-   // [self performSegueWithIdentifier:@"VedioListViewController" sender:nil];
     channelTitle = [channelList objectAtIndex:indexPath.row];
-    
      [self initiateRequestToYoutubeApiAndGetChannelInfo:abc];
 }
-
-
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         CGSize result = [[UIScreen mainScreen] bounds].size;
         if (result.height == 480) {
             // 3.5 inch display - iPhone 4S and below
+            return CGSizeMake(90, 120);
         }
         else if (result.height == 568) {
             // 4 inch display - iPhone 5
@@ -160,7 +126,6 @@
     return CGSizeMake(100, 140);
 }
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSMutableArray*)sender {
     if ([[segue identifier] isEqualToString:@"VedioListViewController"]) {
         VedioListViewController    *destinationView = (VedioListViewController*)segue.destinationViewController;
@@ -178,8 +143,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 
 @end
